@@ -5,6 +5,7 @@ from elasticsearch import Elasticsearch
 es = Elasticsearch(["localhost:9200"], http_compress=True)
 podIds = list()
 
+
 def detectProvider(rec):
     feedUrl = rec['url']
     rec['provider'] = 'itunes'
@@ -12,7 +13,7 @@ def detectProvider(rec):
     try:
         if rec['podcastID'] in podIds:
             raise ValueError(rec['name'])
-    except ValueError: 
+    except ValueError:
         print('Oops! duplicated on')
         pprint(rec)
     podIds.append(rec['podcastID'])
@@ -26,17 +27,21 @@ def detectProvider(rec):
         rec['feedURL'] = 'https://www.podty.me/cast/' + str(rec['podcastID'])
     rec.pop('url')
 
-""" with open('podcastlist.json') as f:
+
+with open('podcastlist.json', 'rt', encoding='UTF8') as f:
     data = json.load(f)
 
-es.delete_by_query(index='casts', body={"query": {"match_all": {}}})
+# es.delete_by_query(index='casts', body={"query": {"match_all": {}}})
 for rec in data:
     detectProvider(rec)
+    rec['imageURL'] = rec.pop('image')
     rec['cast_episode'] = 'cast'
     pprint(rec)
-    es.create(index='casts', doc_type='_doc', id=rec['podcastID'], body=rec) """
+    res = es.index(index='casts', doc_type='_doc',
+                   id=rec['podcastID'], body=rec)
+    pprint(res)
 
-casts = es.search(index='casts', body={"size": 100, "query": {"term": {"provider.keyword": "itunes"}}},  filter_path=['hits.hits._id', 'hits.hits._source.feedURL'])
+""" casts = es.search(index='casts', body={"size": 100, "query": {"term": {"provider.keyword": "itunes"}}},  filter_path=['hits.hits._id', 'hits.hits._source.feedURL'])
 # pprint(casts)
 for cast in casts['hits']['hits']:
     pprint(cast)
@@ -45,3 +50,4 @@ for cast in casts['hits']['hits']:
 pprint(casts)
 
 
+ """
