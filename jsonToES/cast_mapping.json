@@ -58,24 +58,6 @@
 					}
 				}
 			},
-			"host": {
-				"type": "text",
-				"fields": {
-					"keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					}
-				}
-			},
-			"image": {
-				"type": "text",
-				"fields": {
-					"keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					}
-				}
-			},
 			"imageURL": {
 				"type": "text",
 				"fields": {
@@ -104,25 +86,7 @@
 					}
 				}
 			},
-			"message": {
-				"type": "text",
-				"fields": {
-					"keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					}
-				}
-			},
 			"name": {
-				"type": "text",
-				"fields": {
-					"keyword": {
-						"type": "keyword",
-						"ignore_above": 256
-					}
-				}
-			},
-			"path": {
 				"type": "text",
 				"fields": {
 					"keyword": {
@@ -189,7 +153,7 @@
 					}
 				}
 			},
-			"url": {
+			"feedURL": {
 				"type": "text",
 				"fields": {
 					"keyword": {
