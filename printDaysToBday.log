@@ -1,0 +1,6 @@
+INFO 2019-02-25 11:53:43,883 [printDaysToBday] starts
+INFO 2019-02-25 11:53:43,883 [daysBetweenDays] starts
+INFO 2019-02-25 11:53:43,883 [daysBetweenDays] ends
+INFO 2019-02-25 11:53:43,883 [daysBetweenDays] elapsed 0 milliseconds
+INFO 2019-02-25 11:53:43,884 [printDaysToBday] ends
+INFO 2019-02-25 11:53:43,884 [printDaysToBday] elapsed 1 milliseconds
