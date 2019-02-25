@@ -17,7 +17,7 @@ while hasNext:
     for ep in episodes:
         print(ep.get('data-episode-name'))
         print('\t' + ep.get('data-play-uri'))
-    hasNext = False #len(tree.xpath('//a[@class="btnNext"]')) > 0
+    hasNext = False #len(tree.xpath('//a[@class="btnNext"]')) > 0 
     if hasNext:
         pageNumber += 1
         print('go to next page')
